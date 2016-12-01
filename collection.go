@@ -132,7 +132,7 @@ func (col *Collection) Save(doc interface{}) error {
 	var err error
 	var res *nap.Response
 
-	if col.Type == 2 {
+	if col.Type == 2 || col.Type == 3 {
 		res, err = col.db.send("document?collection="+col.Name, "", "POST", doc, &doc, &doc)
 	} else {
 		return errors.New("Trying to save doc into EdgeCollection")
